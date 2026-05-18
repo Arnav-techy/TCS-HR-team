@@ -1,5 +1,5 @@
 # TCS-HR-team
-AI-Based Employee Performance Analytics &amp;amp; Recommendation System
+
 # AI Employee Performance Analytics & Recommendation System
 
 A full-stack MERN application that analyzes employee performance data and provides AI-powered recommendations using OpenRouter AI API.
