@@ -1,7 +1,14 @@
 import axios from 'axios';
 
+let rawBaseURL = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? 'https://tcs-hr-team.onrender.com/api' : 'http://localhost:5000/api');
+
+// Auto-append '/api' if missing
+if (rawBaseURL && !rawBaseURL.endsWith('/api') && !rawBaseURL.endsWith('/api/')) {
+  rawBaseURL = rawBaseURL.replace(/\/+$/, '') + '/api';
+}
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? 'https://tcs-hr-team.onrender.com/api' : 'http://localhost:5000/api'),
+  baseURL: rawBaseURL,
   headers: {
     'Content-Type': 'application/json',
   },
