@@ -226,8 +226,12 @@ Set `VITE_API_BASE_URL` to your live Render backend URL.
 ---
 
 ## Screenshots
+<img width="1871" height="897" alt="image" src="https://github.com/user-attachments/assets/72ae21c6-37eb-48de-a5ba-5ba7c6f55944" />
+<img width="1896" height="760" alt="image" src="https://github.com/user-attachments/assets/f90d9c3f-0801-4d33-86d0-664f85e411d5" />
+<img width="1841" height="881" alt="image" src="https://github.com/user-attachments/assets/92f9e129-c601-4f75-90e1-4608431a3cbf" />
 
-> Add screenshots here — Employee list, AI recommendations, Postman requests, MongoDB Atlas collections, Render deployment.
+
+
 
 ---
 
