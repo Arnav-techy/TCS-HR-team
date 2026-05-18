@@ -14,23 +14,33 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
-  credentials: true,
+  origin: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Health check (always available even if DB is down)
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'ESE AI HR System API is running' });
+});
+
+// Database connection checker middleware
+const mongoose = require('mongoose');
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(503).json({
+      message: 'Database is not connected. Please verify that you configured MONGO_URI correctly in your Render Environment Variables.',
+    });
+  }
+  next();
+});
+
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/employees', require('./routes/employeeRoutes'));
 app.use('/api/ai', require('./routes/aiRoutes'));
-
-// Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'ESE AI HR System API is running' });
-});
 
 // Error handler
 app.use(errorHandler);
